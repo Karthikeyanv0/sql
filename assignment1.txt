@@ -1,0 +1,89 @@
+1. select count(*) from emp;
+
+2. select count(*) from dept;
+
+3. select * from emp;
+
+4. select * from dept;
+
+5. select sum(sal) as salary from emp;
+
+6. select sum(comm) as commission from emp;
+
+7. select deptno, job,comm from emp 
+where comm>=0 order by comm;
+
+8. select hiredate as system_date from emp;
+
+9. select avg(sal) as avg_salary from emp;
+
+10. select deptno,count(*) as no_emp from emp 
+group by deptno
+order by 1;
+
+11. select deptno, sum(sal) as sal_each_dept from emp
+group by deptno
+order by 1;
+
+12. select job, count(*) as no_emp from emp
+group by job
+order by 1;
+
+13. select job, avg(sal) as avg_salary from emp
+group by job
+order by 1;
+
+14. select empno, ename,
+to_char(hiredate, 'DD') as hire_day, 
+to_char(hiredate, 'MM') as hire_month,
+to_char(hiredate, 'YYYY') as hire_year from emp;
+
+15. select * from emp 
+order by deptno;
+
+16. select * from emp
+order by job;
+
+17. select * from emp
+order by sal desc;
+
+18. select * from emp
+order by deptno asc,sal desc;
+
+19. select count(*) as no_emp from emp
+where length(ename)=6;
+
+20. select max(sal) as max_salary, min(sal) as min_salary
+from emp;
+
+21. select deptno, max(sal) as max_salary,min(sal) as min_salary,
+avg(sal) as avg_salary,sum(sal) as sum_salary from emp
+group by deptno
+order by 1;
+
+22. select * from emp
+order by hiredate;
+
+23. select * from emp
+where hiredate=(select max(hiredate) from emp);
+
+24. select * from emp
+where hiredate =(select min(hiredate) from emp);
+
+25. select * from emp
+order by to_char(hiredate,'YYYY') desc, deptno asc;
+
+27. select * from emp
+where sal>=(select avg(sal) from emp);
+select * from emp
+where sal<=(select avg(sal) from emp);
+
+28. select * from emp
+where sal between 2000 and 4000
+order by sal;
+
+29. select ename, sal as max_salary from emp where sal = (select min(sal)  from emp) union
+select ename, sal as max_salary from emp where sal = (select max(sal)  from emp);
+
+30. select count(*) as emp_joined_in_january from emp
+where to_char(hiredate,'MM')=01;
